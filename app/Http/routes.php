@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::resource('makers','MakerController',['except' => ['create','edit']]);
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+Route::resource('vehicles','VehicleController',['only' => ['index']]);
+
+Route::resource('makers.vehicles','MakerVehiclesController',['except' => ['create','edit']]);
